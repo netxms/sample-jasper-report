@@ -6,7 +6,7 @@ Input field type is controlled by the custom property `logicalType` on each para
 
 # Package structure
 
-Each report definition should be packaged into jar/zip with entry point `main.jrxml`. Once definition archive is loaded by the reporting server it will be automatically unpacked (while keeping folder structure) and compiled into `main.jasper`. Any sub reports will be compiled on execution. Property `SUBREPORT_DIR` points to the unpacked folder on execution (so you can refer to images or sub reports with `${SUBREPORT_DIR}/sub.jasper`).
+Each report definition should be packaged into `.jar` or `.zip` file with entry point file `main.jrxml` in archive root. Once definition archive is loaded by the reporting server it will be automatically unpacked (while keeping folder structure) and compiled into `main.jasper`. Any sub reports will be compiled on execution. Property `SUBREPORT_DIR` points to the unpacked folder on execution (so you can refer to images or sub reports with `${SUBREPORT_DIR}/sub.jasper`).
 
 Each report should contain manifest (`/META-INF/MANIFEST.MF`) with GUID `Build-Id`. This GUID is used to distinguish between deployed reports.
 
@@ -28,8 +28,8 @@ Build and deploy sample report, enable reporting module in the NetXMS:
 
 ```shell
 # build report
-git clone https://github.com/netxms/sample-jasper-report.git
-cd sample-jasper-report
+git clone https://github.com/netxms/sample-report.git
+cd sample-report
 mvn package
 
 # setup temporary workspace
