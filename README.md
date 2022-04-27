@@ -1,8 +1,10 @@
 # Introduction
 
-Sample report designed for NetXMS reporting module, which shows all custom input widgets provided by the GUI.
+Sample reports designed for NetXMS reporting module.
 
-Input field type is controlled by the custom property `logicalType` on each parameter. All currently supported types are included in this sample report.
+report-parameters-and-user-input/ – different types of user input fields which can be used in GUI.
+
+users/ – list of all users in the NetXMS database.
 
 # Package structure
 
@@ -20,7 +22,7 @@ While it's possible to create archives by hand (just zip `main.jrxml` and manife
 
 `mvn package`
 
-This will produce `target/sample-1.0.0.jar` which can be deployed to the reporting server.
+This will produce `target/NAME-VERSION.jar` which can be deployed to the reporting server.
 
 # Complete sample
 
@@ -35,8 +37,9 @@ mvn package
 # setup temporary workspace
 mkdir -p /tmp/netxms-reporting/definitions
 
-# copy report definition to correct location
-cp target/sample-1.0.0.jar /tmp/netxms-reporting/definitions
+# copy report definitions to correct location
+cp user-input/target/user-input-1.0.0.jar /tmp/netxms-reporting/definitions
+cp users/target/users-1.0.0.jar /tmp/netxms-reporting/definitions
 
 # enable reporting module
 nxdbmgr set EnableReportingServer 1 # enable reporting server connector
@@ -51,7 +54,6 @@ Once all this is done, open "Reports" perspective in the management console and 
 
 # Making changes
 
-[Jaspersoft® Studio](https://community.jaspersoft.com/project/jaspersoft-studio) can be used to modify or create new reports. To modify this one, right click on the project explorer, select `Import ➔ Existing Projects into Workspace`, then point root directory to the location where this repository is cloned. Once imported – open `main.jrxml` and start editing.
+[Jaspersoft® Studio](https://community.jaspersoft.com/project/jaspersoft-studio) ([direct download without registration](https://sourceforge.net/projects/jasperstudio/)) can be used to modify or create new reports. To modify these samples, right click on the project explorer, select `Import ➔ Existing Projects into Workspace`, then point root directory to the location where this repository is cloned. Once imported – open `main.jrxml` and start editing.
 
-Most of the repots can be preview successfully from the designer, however you should provide input parameters in the correct form (specifically this can be an issue for lists).
-
+Most of the reports can be preview successfully from the designer, however you should provide input parameters in the correct form (specifically this can be an issue for lists).
